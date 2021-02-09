@@ -1,22 +1,23 @@
 import java.util.Scanner;
 
-public class ArrayRotation2 {
+public class ArrayRotation3 {
 
-    static void rotate(int a[], int d, int n) {
-        int b = check(a,d,n);
-        int i,t;
-        int s=n;
-        while(b>=0){
-        for(i=b;i<n-1;i++){
-               t= a[i];
-               a[i]=a[i+1];
-               a[i+1]=t;
-               
-        }b--;n--;
-    }
+    static void left(int a[], int n, int d) {
+        int arr[] = new int[n];
+        int i,j,s=n;
+        int b = check(a, d, n);
+      for (j=0,i = b+1; i < n; j++,i++) {
+            arr[j] = a[i];
 
-        for(i=0;i<s;i++)
-        System.out.println(a[i]);
+
+        }
+        for(i =b;i>=0;i--){
+            arr[j]=a[i];
+            j++;
+        }
+        for (i = 0; i < s; i++) {
+            System.out.println(arr[i]);
+        }
     }
 
     static int check(int a[], int d, int n) {
@@ -30,8 +31,8 @@ public class ArrayRotation2 {
         return i;
 
     }
-
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         int[] a = new int[5];
         int i;
@@ -42,7 +43,7 @@ public class ArrayRotation2 {
         }
         System.out.println("Enter the element to rotate");
         int d = sc.nextInt();
-        rotate(a, d, n);
+        left(a, n, d);
         
-        }
+    }
 }
